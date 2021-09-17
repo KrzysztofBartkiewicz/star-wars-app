@@ -1,6 +1,22 @@
 import * as styled from 'styled-components';
+import xoloniumRegular from '../fonts/Xolonium-Regular.woff';
+import xoloniumBold from '../fonts/Xolonium-Bold.woff';
 
 const GlobalStyle = styled.createGlobalStyle`
+  @font-face {
+    font-family: 'Xolonium Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Xolonium Regular'), url(${xoloniumRegular}) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Xolonium Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Xolonium Bold'), url(${xoloniumBold}) format('woff');
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -12,7 +28,7 @@ const GlobalStyle = styled.createGlobalStyle`
   }
 
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Xolonium Regular', sans-serif;
   }
 
   button,

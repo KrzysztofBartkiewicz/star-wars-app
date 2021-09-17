@@ -13,7 +13,7 @@ const App = () => {
       .catch((err) => console.error('err', err));
   }, [dispatch]);
 
-  return <div></div>;
+  return <div>sdfsdfsdfsdf</div>;
 };
 
 export default App;
