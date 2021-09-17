@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setCharacters } from '../redux/actions';
+import Router from '../router';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const App = () => {
       .catch((err) => console.error('err', err));
   }, [dispatch]);
 
-  return <div>sdfsdfsdfsdf</div>;
+  return <Router />;
 };
 
 export default App;
