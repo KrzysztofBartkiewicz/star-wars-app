@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyledNavLink, StyledUnderline } from './StyledNavLink';
 
-const NavLink = ({ children, to, exact }) => {
+const NavLink = ({ children, to, exact, navMenu }) => {
   return (
     <StyledNavLink to={to} exact={exact}>
       {children}
-      <StyledUnderline />
+      {navMenu && <StyledUnderline />}
     </StyledNavLink>
   );
 };

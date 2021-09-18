@@ -2,7 +2,8 @@ const routes = {
   home: '/',
   login: '/login',
   characters: '/characters',
-  character: '/characters/:id',
+  character: '/character',
+  favorites: '/favorites',
 };
 
 export default routes;

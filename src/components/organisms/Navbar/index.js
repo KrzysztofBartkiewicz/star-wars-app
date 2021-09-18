@@ -17,11 +17,14 @@ const Navbar = () => {
   return (
     <StyledNavbar>
       <StyledNavMenuWrapper>
-        <NavLink exact to={routes.home}>
+        <NavLink exact to={routes.home} navMenu>
           <Paragraph>Home</Paragraph>
         </NavLink>
-        <NavLink to={routes.characters}>
+        <NavLink to={routes.characters} navMenu>
           <Paragraph>Characters</Paragraph>
+        </NavLink>
+        <NavLink to={routes.favorites} navMenu>
+          <Paragraph>Favorites</Paragraph>
         </NavLink>
       </StyledNavMenuWrapper>
 
