@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import routes from '../../../router/routes';
 import NavLink from '../../molecules/NavLink';
+import Paragraph from '../../atoms/Paragraph';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -16,9 +18,11 @@ const Navbar = () => {
     <StyledNavbar>
       <StyledNavMenuWrapper>
         <NavLink exact to={routes.home}>
-          Home
+          <Paragraph>Home</Paragraph>
         </NavLink>
-        <NavLink to={routes.characters}>Characters</NavLink>
+        <NavLink to={routes.characters}>
+          <Paragraph>Characters</Paragraph>
+        </NavLink>
       </StyledNavMenuWrapper>
 
       <StyledLogo />
