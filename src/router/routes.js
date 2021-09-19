@@ -4,6 +4,7 @@ const routes = {
   characters: '/characters',
   character: '/character',
   favorites: '/favorites',
+  search: '/search',
 };
 
 export default routes;

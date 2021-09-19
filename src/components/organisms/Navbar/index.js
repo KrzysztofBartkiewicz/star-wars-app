@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import routes from '../../../router/routes';
 import NavLink from '../../molecules/NavLink';
 import Paragraph from '../../atoms/Paragraph';
-import Button from '../../atoms/Button';
 import Popover from '../../utils/Popover';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Modal from '../../utils/Modal';
 import {
   StyledNavbar,
   StyledNavMenuWrapper,
@@ -37,14 +35,15 @@ const Navbar = () => {
         <NavLink to={routes.favorites} navMenu>
           <Paragraph>Favorites</Paragraph>
         </NavLink>
+        <NavLink to={routes.search} navMenu>
+          <Paragraph>Search</Paragraph>
+        </NavLink>
       </StyledNavMenuWrapper>
 
       <StyledLogo />
 
       <StyledUserMenuWrapper>
-        <Button variant="round">
-          <FontAwesomeIcon icon={faSearch} size="2x" color="white" />
-        </Button>
+        <Modal />
         <Popover />
       </StyledUserMenuWrapper>
     </StyledNavbar>

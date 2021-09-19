@@ -6,9 +6,10 @@ import Characters from '../views/Characters';
 import SingleCharacter from '../views/SingleCharacter';
 import Favorites from '../views/Favorites';
 import PrivateRoute from './PrivateRoute';
+import Login from '../views/Login';
+import Search from '../views/Search';
 import { useSelector } from 'react-redux';
 import { getUserData } from '../redux/userReducer/selectors';
-import Login from '../views/Login';
 
 const Router = () => {
   const { currentUser } = useSelector(getUserData);
@@ -40,7 +41,16 @@ const Router = () => {
           component={Favorites}
           isLogged={currentUser}
         />
+        <PrivateRoute
+          exact
+          path={routes.search}
+          component={Search}
+          isLogged={currentUser}
+        />
         <Route path={routes.login} component={Login} />
+        <Route>
+          <Redirect to={routes.home} />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -3,6 +3,7 @@ import { actionType } from './actions';
 const initialState = {
   characters: null,
   favCharacters: [],
+  searchedCharacters: null,
 };
 
 const appReducer = (state = initialState, { type, payload }) => {
@@ -38,6 +39,12 @@ const appReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         favCharacters: [],
+      };
+
+    case actionType.SET_SEARCHED_CHARACTERS:
+      return {
+        ...state,
+        searchedCharacters: payload,
       };
 
     default:

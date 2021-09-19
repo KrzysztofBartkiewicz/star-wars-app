@@ -4,6 +4,7 @@ export const actionType = {
   DELETE_CHARACTER_FROM_FAVORITES: 'DELETE_CHARACTER_FROM_FAVORITES',
   LOAD_CHARACTERS_FROM_LS: 'LOAD_CHARACTERS_FROM_LS',
   DELETE_ALL_FAVORITES_CHARACTERS: 'DELETE_ALL_FAVORITES_CHARACTERS',
+  SET_SEARCHED_CHARACTERS: 'SET_SEARCHED_CHARACTERS',
 };
 
 export const setCharacters = (characters) => ({
@@ -29,4 +30,9 @@ export const loadCharactersFromLS = (characters) => ({
 export const deleteAllFavoritesCharacters = () => ({
   type: actionType.DELETE_ALL_FAVORITES_CHARACTERS,
   payload: null,
+});
+
+export const setSearchedCharacters = (characters) => ({
+  type: actionType.SET_SEARCHED_CHARACTERS,
+  payload: characters,
 });
