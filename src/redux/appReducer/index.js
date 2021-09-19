@@ -2,7 +2,7 @@ import { actionType } from './actions';
 
 const initialState = {
   characters: null,
-  favCharacters: JSON.parse(localStorage.getItem('favCharacters')) || [],
+  favCharacters: [],
 };
 
 const appReducer = (state = initialState, { type, payload }) => {
@@ -26,6 +26,18 @@ const appReducer = (state = initialState, { type, payload }) => {
         favCharacters: state.favCharacters.filter(
           (character) => character.name !== name
         ),
+      };
+
+    case actionType.LOAD_CHARACTERS_FROM_LS:
+      return {
+        ...state,
+        favCharacters: payload,
+      };
+
+    case actionType.DELETE_ALL_FAVORITES_CHARACTERS:
+      return {
+        ...state,
+        favCharacters: [],
       };
 
     default:

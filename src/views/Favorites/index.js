@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../../components/organisms/Card';
-import { getFavoritesCharacters } from '../../redux/selectors';
+import { getFavoritesCharacters } from '../../redux/appReducer/selectors';
 import List from '../../templates/List';
 import { StyledFavorites } from './StyledFavorites';
 

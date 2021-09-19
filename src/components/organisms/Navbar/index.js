@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import routes from '../../../router/routes';
 import NavLink from '../../molecules/NavLink';
 import Paragraph from '../../atoms/Paragraph';
+import Button from '../../atoms/Button';
+import Popover from '../../utils/Popover';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import {
   StyledNavbar,
@@ -11,13 +12,9 @@ import {
   StyledUserMenuWrapper,
   StyledLogo,
 } from './StyledNavbar';
-import Button from '../../atoms/Button';
-import { AuthContext } from '../../../context';
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-
-  const { signOut } = useContext(AuthContext);
 
   const handleScroll = () => {
     const scrollValue = document.scrollingElement.scrollTop;
@@ -45,10 +42,10 @@ const Navbar = () => {
       <StyledLogo />
 
       <StyledUserMenuWrapper>
-        <Button onClick={signOut}>
-          <FontAwesomeIcon icon={faUser} size="2x" color="white" />
+        <Button variant="round">
+          <FontAwesomeIcon icon={faSearch} size="2x" color="white" />
         </Button>
-        <FontAwesomeIcon icon={faSearch} size="2x" color="white" />
+        <Popover />
       </StyledUserMenuWrapper>
     </StyledNavbar>
   );
