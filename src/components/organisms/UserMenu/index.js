@@ -9,7 +9,7 @@ import Paragraph from '../../atoms/Paragraph';
 import Button from '../../atoms/Button';
 import { StyledInnerWrapper, StyledUserMenu } from './StyledUserMenu';
 
-const extractLogin = (email) => email.slice(0, email.indexOf('@'));
+const extractLogin = (email) => email && email.slice(0, email.indexOf('@'));
 
 const UserMenu = () => {
   const { currentUser } = useSelector(getUserData);
@@ -37,9 +37,11 @@ const UserMenu = () => {
           )}
           <StyledInnerWrapper>
             <Button onClick={signOut}>Logout</Button>
-            <Button onClick={handleDelete} color="secondary">
-              Delete all favs
-            </Button>
+            {favs.length !== 0 && (
+              <Button onClick={handleDelete} color="secondary">
+                Delete all favs
+              </Button>
+            )}
           </StyledInnerWrapper>
         </>
       )}

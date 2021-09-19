@@ -10,13 +10,14 @@ import Login from '../views/Login';
 import Search from '../views/Search';
 import { useSelector } from 'react-redux';
 import { getUserData } from '../redux/userReducer/selectors';
+import Spinner from '../components/utils/Spinner';
 
 const Router = () => {
   const { currentUser } = useSelector(getUserData);
 
-  return (
+  const rednerRouter = () => (
     <BrowserRouter>
-      {currentUser && <Redirect to={routes.home} />}
+      {typeof currentUser === 'object' && <Redirect to={routes.home} />}
       <Switch>
         <PrivateRoute
           exact
@@ -30,7 +31,6 @@ const Router = () => {
           isLogged={currentUser}
         />
         <PrivateRoute
-          exact
           path={routes.character}
           component={SingleCharacter}
           isLogged={currentUser}
@@ -48,12 +48,11 @@ const Router = () => {
           isLogged={currentUser}
         />
         <Route path={routes.login} component={Login} />
-        <Route>
-          <Redirect to={routes.home} />
-        </Route>
       </Switch>
     </BrowserRouter>
   );
+
+  return <>{currentUser ? rednerRouter() : <Spinner />}</>;
 };
 
 export default Router;

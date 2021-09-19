@@ -21,6 +21,7 @@ const SearchBox = ({ className }) => {
       search: '',
     },
     onSubmit: async ({ search }, { resetForm }) => {
+      dispatch(setSearchedCharacters('waiting'));
       const characters = await fetchSearchedCharacters(search);
       dispatch(setSearchedCharacters(characters));
       resetForm();

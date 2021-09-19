@@ -10,6 +10,7 @@ import Pagination from '../../components/molecules/Pagination';
 import Card from '../../components/organisms/Card';
 import { StyledSearch } from './StyledSearch';
 import Heading from '../../components/atoms/Heading';
+import Spinner from '../../components/utils/Spinner';
 
 const Search = () => {
   const characters = useSelector(getSearchedCharacters);
@@ -28,6 +29,7 @@ const Search = () => {
   return (
     <StyledSearch>
       <SearchBox />
+      {characters === 'waiting' && <Spinner />}
       {characters && characters.results && (
         <>
           <Pagination
