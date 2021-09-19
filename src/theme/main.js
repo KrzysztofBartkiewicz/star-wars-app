@@ -1,20 +1,50 @@
 import { css } from 'styled-components';
 
-const mainTheme = {
-  colors: {
-    blue: '#106ae0',
-    red: '#ec3137',
-    orange: '##F1B346',
-    grey: '#4d4d4d',
-    lightGrey: '#717171',
-    black: '#000000',
-    white: '#ffffff',
-    active: '#ec3137',
-  },
+const colors = {
+  blue: (alpha) =>
+    typeof alpha === 'object'
+      ? 'rgb(16,106,224)'
+      : `rgba(16,106,224, ${alpha})`,
+  red: (alpha) =>
+    typeof alpha === 'object' ? 'rgb(236,49,55)' : `rgba(236,49,55, ${alpha})`,
+  orange: (alpha) =>
+    typeof alpha === 'object'
+      ? 'rgb(241,176,70)'
+      : `rgba(241,179,70, ${alpha})`,
+  grey: (alpha) =>
+    typeof alpha === 'object' ? 'rgb(77,77,77)' : `rgba(77,77,77, ${alpha})`,
+  lightGrey: (alpha) =>
+    typeof alpha === 'object'
+      ? 'rgb(113,113,113)'
+      : `rgba(113,113,113, ${alpha})`,
+  black: (alpha) =>
+    typeof alpha === 'object' ? 'rgb(0,0,0)' : `rgba(0,0,0, ${alpha})`,
+  white: (alpha) =>
+    typeof alpha === 'object'
+      ? 'rgb(255,255,255)'
+      : `rgba(255,255,255, ${alpha})`,
 
+  active: (alpha) =>
+    typeof alpha === 'object' ? 'rgb(236,45,55)' : `rgba(236,49,55, ${alpha})`,
+};
+
+const defaultBoxShape = css`
+  box-shadow: inset 5px 5px 5px ${colors.black(0.2)},
+    inset -5px -5px 15px ${colors.white(0.1)}, 5px 5px 15px ${colors.black(0.3)},
+    -5px -5px 15px ${colors.white(0.1)};
+  border-radius: 1.5rem;
+  margin: 3rem;
+  background-color: ${colors.black(0.5)};
+  padding: 2rem;
+`;
+
+const mainTheme = {
+  colors,
+  defaultBoxShape,
   fontSizes: {
     s: '1.4rem',
     l: '1.6rem',
+    m: '2rem',
     xl: '8.1rem',
     xxl: '18rem',
   },
@@ -26,7 +56,8 @@ const mainTheme = {
 
   mixins: {
     view: (bg) => css`
-      height: 100vh;
+      min-height: 100vh;
+      padding-top: 20rem;
       background-image: radial-gradient(
           circle closest-corner at 50% 70%,
           transparent 15%,
@@ -35,6 +66,33 @@ const mainTheme = {
         url(${bg});
       background-position: center;
       background-size: cover;
+      background-attachment: fixed;
+      overflow-y: auto;
+    `,
+    box: css`
+      ${defaultBoxShape}
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    `,
+    innerBox: css`
+      border-radius: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: ${colors.grey};
+      position: relative;
+
+      &:before {
+        content: '';
+        border-radius: 1.5rem;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0;
+        background-color: ${colors.lightGrey};
+      }
     `,
   },
 };

@@ -29,6 +29,7 @@ const GlobalStyle = styled.createGlobalStyle`
 
   body {
     font-family: 'Xolonium Regular', sans-serif;
+    background-color: #000000;
   }
 
   button,
