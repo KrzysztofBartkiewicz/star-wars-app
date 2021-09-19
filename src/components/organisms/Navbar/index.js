@@ -21,6 +21,7 @@ const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -40,10 +41,10 @@ const Navbar = () => {
         </NavLink>
       </StyledNavMenuWrapper>
 
-      <StyledLogo />
+      <StyledLogo scrollPosition={scrollPosition} />
 
       <StyledUserMenuWrapper>
-        <Modal />
+        {/* <Modal /> */}
         <Popover />
       </StyledUserMenuWrapper>
     </StyledNavbar>
