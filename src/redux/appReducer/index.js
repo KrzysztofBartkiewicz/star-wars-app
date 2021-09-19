@@ -5,7 +5,7 @@ const initialState = {
   favCharacters: JSON.parse(localStorage.getItem('favCharacters')) || [],
 };
 
-const reducer = (state = initialState, { type, payload }) => {
+const appReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionType.SET_CHARACTERS:
       return {
@@ -33,4 +33,4 @@ const reducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default reducer;
+export default appReducer;

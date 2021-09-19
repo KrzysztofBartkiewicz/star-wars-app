@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useContext, useEffect, useState } from 'react';
 import routes from '../../../router/routes';
 import NavLink from '../../molecules/NavLink';
 import Paragraph from '../../atoms/Paragraph';
@@ -12,10 +11,25 @@ import {
   StyledUserMenuWrapper,
   StyledLogo,
 } from './StyledNavbar';
+import Button from '../../atoms/Button';
+import { AuthContext } from '../../../context';
 
 const Navbar = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const { signOut } = useContext(AuthContext);
+
+  const handleScroll = () => {
+    const scrollValue = document.scrollingElement.scrollTop;
+    setScrollPosition(scrollValue);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <StyledNavbar>
+    <StyledNavbar scrollPosition={scrollPosition}>
       <StyledNavMenuWrapper>
         <NavLink exact to={routes.home} navMenu>
           <Paragraph>Home</Paragraph>
@@ -31,8 +45,10 @@ const Navbar = () => {
       <StyledLogo />
 
       <StyledUserMenuWrapper>
+        <Button onClick={signOut}>
+          <FontAwesomeIcon icon={faUser} size="2x" color="white" />
+        </Button>
         <FontAwesomeIcon icon={faSearch} size="2x" color="white" />
-        <FontAwesomeIcon icon={faUser} size="2x" color="white" />
       </StyledUserMenuWrapper>
     </StyledNavbar>
   );

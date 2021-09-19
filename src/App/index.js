@@ -1,18 +1,34 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setCharacters } from '../redux/actions';
+import { setCharacters } from '../redux/appReducer/actions';
 import Router from '../router';
+import { fetchCharacters } from '../api/swapi';
+import { useSelector } from 'react-redux';
+import { getFavoritesCharacters } from '../redux/appReducer/selectors';
+import { getUserData } from '../redux/userReducer/selectors';
 
 const App = () => {
   const dispatch = useDispatch();
+  const favorites = useSelector(getFavoritesCharacters);
+  const { currentUser } = useSelector(getUserData);
 
   useEffect(() => {
-    axios
-      .get('https://swapi.dev/api/people')
-      .then((res) => dispatch(setCharacters(res.data)))
-      .catch((err) => console.error('err', err));
-  }, [dispatch]);
+    localStorage.setItem('favCharacters', JSON.stringify(favorites));
+  }, [favorites]);
+
+  useEffect(() => {
+    if (currentUser) {
+      const getData = async () => {
+        const characters = await fetchCharacters(
+          'https://swapi.dev/api/people'
+        );
+        dispatch(setCharacters(characters));
+      };
+      getData();
+    } else {
+      dispatch(setCharacters(null));
+    }
+  }, [currentUser]);
 
   return <Router />;
 };
