@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
 `;
 
 export const StyledInput = styled.input`

@@ -7,6 +7,7 @@ export const StyledParagraph = styled.p`
       font-size: ${size ? fontSizes[size] : fontSizes.l};
       font-weight: ${weight ? fontWeights[weight] : fontWeights.regular};
       color: ${color ? colors[color] : colors.white};
+      letter-spacing: 1px;
     `;
   }}
 `;

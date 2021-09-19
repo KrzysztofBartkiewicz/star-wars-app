@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+let cssRules;
+
 export const StyledButton = styled.button`
   position: relative;
   display: inline-block;
@@ -10,9 +12,8 @@ export const StyledButton = styled.button`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
 
-  ${({ theme, color, variant }) => {
+  ${({ theme, color, variant, disabled }) => {
     const { colors } = theme;
-    let cssRules;
 
     const getBtnColor = () => {
       if (color) {
@@ -27,8 +28,28 @@ export const StyledButton = styled.button`
       }
       if (color === 'secondary') {
         cssRules = css`
-          background-color: rgba(0, 0, 0, 0.4);
+          background-color: ${colors.black('0.6')};
           border: 1px solid ${colors.white};
+        `;
+      }
+      if (disabled) {
+        cssRules = css`
+          background-color: ${colors.lightGrey};
+          filter: blur(1px);
+          cursor: default;
+        `;
+      }
+
+      if (variant === 'round') {
+        cssRules = css`
+          width: 3rem;
+          height: 3rem;
+          padding: 2rem;
+          border-radius: 50%;
+          background-color: transparent;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
         `;
       }
     };
@@ -37,8 +58,23 @@ export const StyledButton = styled.button`
   }}
 
   &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-    background: ${({ theme }) => theme.colors.white};
-    color: ${({ theme }) => theme.colors.black};
+    ${({ disabled, theme, variant }) => {
+      if (!disabled) {
+        if (variant === 'round') {
+          return css`
+            & > * {
+              transition: color 0.3s ease-in-out;
+              color: ${theme.colors.active};
+            }
+          `;
+        } else {
+          return css`
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            background: ${theme.colors.white};
+            color: ${theme.colors.black};
+          `;
+        }
+      }
+    }}
   }
 `;

@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCharacters } from '../redux/appReducer/actions';
+import {
+  loadCharactersFromLS,
+  setCharacters,
+} from '../redux/appReducer/actions';
 import Router from '../router';
 import { fetchCharacters } from '../api/swapi';
 import { useSelector } from 'react-redux';
@@ -13,16 +16,29 @@ const App = () => {
   const { currentUser } = useSelector(getUserData);
 
   useEffect(() => {
-    localStorage.setItem('favCharacters', JSON.stringify(favorites));
+    if (currentUser) {
+      localStorage.setItem(
+        `${currentUser.uid}-favCharacters`,
+        JSON.stringify(favorites)
+      );
+    }
   }, [favorites]);
 
   useEffect(() => {
     if (currentUser) {
       const getData = async () => {
         const characters = await fetchCharacters(
-          'https://swapi.dev/api/people'
+          'https://swapi.dev/api/people/'
         );
         dispatch(setCharacters(characters));
+
+        dispatch(
+          loadCharactersFromLS(
+            JSON.parse(
+              localStorage.getItem(`${currentUser.uid}-favCharacters`) || []
+            )
+          )
+        );
       };
       getData();
     } else {

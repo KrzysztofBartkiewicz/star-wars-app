@@ -1,9 +1,24 @@
 import React from 'react';
 import { StyledButton } from './StyledButton';
 
-const Button = ({ children, className, color, variant }) => {
+const Button = ({
+  children,
+  className,
+  color,
+  variant,
+  onClick,
+  disabled,
+  type,
+}) => {
   return (
-    <StyledButton color={color} className={className}>
+    <StyledButton
+      disabled={disabled}
+      onClick={onClick}
+      color={color}
+      className={className}
+      type={type}
+      variant={variant}
+    >
       {children}
     </StyledButton>
   );

@@ -6,7 +6,10 @@ const List = ({ arr, component: Component, ...rest }) => {
     <StyledList>
       {arr.map(({ ...props }, index) => (
         <StyledListItem key={props.name}>
-          <Component number={index + 1} {...props} {...rest} />
+          <Component
+            number={(rest.currentPage - 1) * 10 + index + 1}
+            {...props}
+          />
         </StyledListItem>
       ))}
     </StyledList>

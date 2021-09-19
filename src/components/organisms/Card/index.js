@@ -4,7 +4,7 @@ import Button from '../../atoms/Button';
 import FavIcon from '../../atoms/FavIcon/Index';
 import routes from '../../../router/routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFavoritesCharacters } from '../../../redux/selectors';
+import { getFavoritesCharacters } from '../../../redux/appReducer/selectors';
 import {
   StyledBox,
   StyledCard,
@@ -15,7 +15,7 @@ import {
 import {
   addCharacterToFavorites,
   deleteCharacterFromFavorites,
-} from '../../../redux/actions';
+} from '../../../redux/appReducer/actions';
 
 const Card = (props) => {
   const { name, number } = props;

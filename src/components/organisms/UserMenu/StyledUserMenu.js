@@ -6,6 +6,9 @@ export const StyledUserMenu = styled.div`
   padding: 3rem;
   margin: 0;
   border-radius: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const StyledInnerWrapper = styled.div`

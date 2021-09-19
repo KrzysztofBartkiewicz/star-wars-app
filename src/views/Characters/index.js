@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import Card from '../../components/organisms/Card';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCharacters } from '../../redux/selectors';
+import { getCharacters } from '../../redux/appReducer/selectors';
 import List from '../../templates/List';
 import { StyledCharacters } from './StyledCharacters';
 import Pagination from '../../components/molecules/Pagination';
-import { setCharacters } from '../../redux/actions';
+import { setCharacters } from '../../redux/appReducer/actions';
 import { fetchCharacters } from '../../api/swapi';
+import Spinner from '../../components/utils/Spinner';
 
 const Characters = () => {
   const characters = useSelector(getCharacters);
   const dispatch = useDispatch();
-
-  useEffect(() => {}, [characters]);
 
   const handleNext = async () => {
     const data = await fetchCharacters(characters.next);
@@ -26,7 +25,7 @@ const Characters = () => {
 
   return (
     <StyledCharacters>
-      {characters && (
+      {characters ? (
         <>
           <Pagination
             totalElements={characters.count}
@@ -36,8 +35,14 @@ const Characters = () => {
             onNextClick={handleNext}
             onPreviousClick={handlePrevious}
           />
-          <List arr={characters.results} component={Card} />
+          <List
+            arr={characters.results}
+            currentPage={characters.page}
+            component={Card}
+          />
         </>
+      ) : (
+        <Spinner />
       )}
     </StyledCharacters>
   );
