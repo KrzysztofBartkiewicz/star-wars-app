@@ -1,6 +1,6 @@
 # Demo
 
-[<------------Go to page------------>](https://star-wars-app-97b77.web.app)
+[<------------Go to page------------>](https://star-wars-12345.netlify.app)
 
 ## Usage
 
