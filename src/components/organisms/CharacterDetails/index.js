@@ -2,12 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Heading from '../../atoms/Heading';
 import Paragraph from '../../atoms/Paragraph';
-import Card from '../Card';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getCharacters,
-  getFavoritesCharacters,
-} from '../../../redux/appReducer/selectors';
+import { getFavoritesCharacters } from '../../../redux/appReducer/selectors';
 import {
   addCharacterToFavorites,
   deleteCharacterFromFavorites,
@@ -19,7 +15,7 @@ import {
   StyledFavIcon,
   StyledFilmItem,
   StyledFilmsList,
-  StyledImageWrapper,
+  StyledImage,
   StyledMainWrapper,
   StyledNumber,
   StyledNumberBox,
@@ -33,8 +29,11 @@ const CharacterDetails = ({ details }) => {
   const dispatch = useDispatch();
   const favs = useSelector(getFavoritesCharacters);
   const [filmsArr, setFilmsArr] = useState([]);
+  const [img, setImg] = useState('');
 
-  const characters = useSelector(getCharacters);
+  import(`../../../assets/images/characters/${name}.jpg`).then((res) =>
+    setImg(res.default)
+  );
 
   useEffect(() => {
     let promisesArr = [];
@@ -109,7 +108,7 @@ const CharacterDetails = ({ details }) => {
   return (
     <StyledCharacterDetails>
       <StyledMainWrapper>
-        <StyledImageWrapper></StyledImageWrapper>
+        <StyledImage src={img} alt={name} />
 
         <StyledNumberWrapper>
           <StyledNumberBox>

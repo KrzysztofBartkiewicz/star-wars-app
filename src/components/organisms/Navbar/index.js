@@ -3,7 +3,6 @@ import routes from '../../../router/routes';
 import NavLink from '../../molecules/NavLink';
 import Paragraph from '../../atoms/Paragraph';
 import Popover from '../../utils/Popover';
-import Modal from '../../utils/Modal';
 import {
   StyledNavbar,
   StyledNavMenuWrapper,
@@ -44,7 +43,6 @@ const Navbar = () => {
       <StyledLogo scrollPosition={scrollPosition} />
 
       <StyledUserMenuWrapper>
-        {/* <Modal /> */}
         <Popover />
       </StyledUserMenuWrapper>
     </StyledNavbar>

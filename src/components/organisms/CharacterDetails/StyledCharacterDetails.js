@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import FavIcon from '../../atoms/FavIcon/Index';
 import Heading from '../../atoms/Heading';
-import bg from '../../../assets/images/luke.jpg';
 
 export const StyledCharacterDetails = styled.div`
   ${({ theme }) => theme.defaultBoxShape}
   display: flex;
   align-items: stretch;
-  min-width: 80rem;
+  min-width: 70rem;
 `;
 
 export const StyledMainWrapper = styled.div`
@@ -15,11 +14,9 @@ export const StyledMainWrapper = styled.div`
   margin: 1rem;
 `;
 
-export const StyledImageWrapper = styled.div`
+export const StyledImage = styled.img`
   ${({ theme }) => theme.defaultBoxShape}
-
-  height: 40rem;
-  width: 100%;
+  max-height: 40rem;
 `;
 
 export const StyledNumberWrapper = styled.div`
@@ -28,10 +25,11 @@ export const StyledNumberWrapper = styled.div`
 
 export const StyledNumberBox = styled.div`
   ${({ theme }) => theme.mixins.innerBox}
+  padding: 0 10rem;
 `;
 
 export const StyledContent = styled.div`
-  min-width: 60rem;
+  width: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +40,9 @@ export const StyledContent = styled.div`
   }
 `;
 
-export const StyledFavIcon = styled(FavIcon)``;
+export const StyledFavIcon = styled(FavIcon)`
+  z-index: 20;
+`;
 
 export const StyledNumber = styled(Heading)`
   z-index: 10;
@@ -51,6 +51,7 @@ export const StyledNumber = styled(Heading)`
 export const StyledDetailsWrapper = styled.div`
   width: 60%;
   padding: 4rem;
+  margin-left: 3rem;
 `;
 
 export const StyledSingleDetailWrapper = styled.div`
