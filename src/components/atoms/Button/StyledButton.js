@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
 
-  ${({ theme, color, variant, disabled }) => {
+  ${({ theme, color, variant, disabled, activeColor }) => {
     const { colors } = theme;
 
     const getBtnColor = () => {
@@ -23,7 +23,7 @@ export const StyledButton = styled.button`
       }
       if (color === 'primary' || !color) {
         cssRules = css`
-          background-color: ${colors.active};
+          background-color: ${colors[activeColor]};
         `;
       }
       if (color === 'secondary') {
@@ -58,13 +58,13 @@ export const StyledButton = styled.button`
   }}
 
   &:hover {
-    ${({ disabled, theme, variant }) => {
+    ${({ disabled, theme, variant, activeColor }) => {
       if (!disabled) {
         if (variant === 'round') {
           return css`
             & > * {
               transition: color 0.3s ease-in-out;
-              color: ${theme.colors.active};
+              color: ${theme.colors[activeColor]};
             }
           `;
         } else {

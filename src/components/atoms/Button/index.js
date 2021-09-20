@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { getActiveColor } from '../../../redux/appReducer/selectors';
 import { StyledButton } from './StyledButton';
 
 const Button = ({
@@ -10,8 +12,11 @@ const Button = ({
   disabled,
   type,
 }) => {
+  const activeColor = useSelector(getActiveColor);
+
   return (
     <StyledButton
+      activeColor={activeColor}
       disabled={disabled}
       onClick={onClick}
       color={color}

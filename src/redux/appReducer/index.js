@@ -4,6 +4,7 @@ const initialState = {
   characters: null,
   favCharacters: [],
   searchedCharacters: null,
+  activeColor: 'red',
 };
 
 const appReducer = (state = initialState, { type, payload }) => {
@@ -45,6 +46,12 @@ const appReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         searchedCharacters: payload,
+      };
+
+    case actionType.SET_ACITVE_COLOR:
+      return {
+        ...state,
+        activeColor: payload,
       };
 
     default:

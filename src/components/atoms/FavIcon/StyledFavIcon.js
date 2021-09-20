@@ -8,7 +8,7 @@ const appear = keyframes`
 `;
 
 export const StyledHeartIcon = styled(FontAwesomeIcon)`
-  color: ${({ theme }) => theme.colors.active};
+  color: ${({ theme, activeColor }) => theme.colors[activeColor]};
   position: absolute;
   top: 2rem;
   left: 2rem;

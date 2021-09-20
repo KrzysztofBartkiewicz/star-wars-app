@@ -5,6 +5,7 @@ export const actionType = {
   LOAD_CHARACTERS_FROM_LS: 'LOAD_CHARACTERS_FROM_LS',
   DELETE_ALL_FAVORITES_CHARACTERS: 'DELETE_ALL_FAVORITES_CHARACTERS',
   SET_SEARCHED_CHARACTERS: 'SET_SEARCHED_CHARACTERS',
+  SET_ACITVE_COLOR: 'SET_ACTIVE_COLOR',
 };
 
 export const setCharacters = (characters) => ({
@@ -35,4 +36,9 @@ export const deleteAllFavoritesCharacters = () => ({
 export const setSearchedCharacters = (characters) => ({
   type: actionType.SET_SEARCHED_CHARACTERS,
   payload: characters,
+});
+
+export const setActiveColor = (color) => ({
+  type: actionType.SET_ACITVE_COLOR,
+  payload: color,
 });

@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Logo from '../../atoms/Logo';
 
 export const StyledNavbar = styled.nav`

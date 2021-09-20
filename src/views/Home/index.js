@@ -1,9 +1,13 @@
 import React from 'react';
-import Spinner from '../../components/utils/Spinner';
+import SettingsMenu from '../../components/organisms/SettingsMenu';
 import { StyledHome } from './StyledHome';
 
 const Home = () => {
-  return <StyledHome></StyledHome>;
+  return (
+    <StyledHome>
+      <SettingsMenu />
+    </StyledHome>
+  );
 };
 
 export default Home;

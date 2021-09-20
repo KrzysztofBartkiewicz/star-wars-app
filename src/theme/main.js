@@ -2,30 +2,19 @@ import { css } from 'styled-components';
 
 const colors = {
   blue: (alpha) =>
-    typeof alpha === 'object'
-      ? 'rgb(16,106,224)'
-      : `rgba(16,106,224, ${alpha})`,
+    typeof alpha === 'object' ? '#106AE0' : `rgba(16,106,224, ${alpha})`,
   red: (alpha) =>
-    typeof alpha === 'object' ? 'rgb(236,49,55)' : `rgba(236,49,55, ${alpha})`,
+    typeof alpha === 'object' ? '#EC3137' : `rgba(236,49,55, ${alpha})`,
   orange: (alpha) =>
-    typeof alpha === 'object'
-      ? 'rgb(241,176,70)'
-      : `rgba(241,179,70, ${alpha})`,
+    typeof alpha === 'object' ? '#F1B046' : `rgba(241,179,70, ${alpha})`,
   grey: (alpha) =>
-    typeof alpha === 'object' ? 'rgb(77,77,77)' : `rgba(77,77,77, ${alpha})`,
+    typeof alpha === 'object' ? '#4D4D4D' : `rgba(77,77,77, ${alpha})`,
   lightGrey: (alpha) =>
-    typeof alpha === 'object'
-      ? 'rgb(113,113,113)'
-      : `rgba(113,113,113, ${alpha})`,
+    typeof alpha === 'object' ? '#717171' : `rgba(113,113,113, ${alpha})`,
   black: (alpha) =>
-    typeof alpha === 'object' ? 'rgb(0,0,0)' : `rgba(0,0,0, ${alpha})`,
+    typeof alpha === 'object' ? '#000000' : `rgba(0,0,0, ${alpha})`,
   white: (alpha) =>
-    typeof alpha === 'object'
-      ? 'rgb(255,255,255)'
-      : `rgba(255,255,255, ${alpha})`,
-
-  active: (alpha) =>
-    typeof alpha === 'object' ? 'rgb(236,45,55)' : `rgba(236,49,55, ${alpha})`,
+    typeof alpha === 'object' ? '#FFFFFF' : `rgba(255,255,255, ${alpha})`,
 };
 
 const defaultBoxShape = css`
