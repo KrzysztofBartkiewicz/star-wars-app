@@ -23,6 +23,8 @@ import {
   StyledSingleDetailWrapper,
 } from './StyledCharacterDetails';
 import Button from '../../atoms/Button';
+import { fetchFilms } from '../../../api/swapi';
+import Spinner from '../../utils/Spinner';
 
 const CharacterDetails = ({ details }) => {
   const { name, number, birth_year, eye_color, height, mass, films } = details;
@@ -36,24 +38,11 @@ const CharacterDetails = ({ details }) => {
   );
 
   useEffect(() => {
-    let promisesArr = [];
-
-    films.forEach((film) => promisesArr.push(axios.get(film)));
-
-    Promise.all(promisesArr)
-      .then((res) => {
-        const mappedFilms = res.map(({ data }) => {
-          const { title, producer, director, release_date } = data;
-          return {
-            title,
-            producer,
-            director,
-            release_date,
-          };
-        });
-        setFilmsArr(mappedFilms);
-      })
-      .catch((err) => console.error(err));
+    const getFilms = async () => {
+      const returnedFilms = await fetchFilms(films);
+      setFilmsArr(returnedFilms);
+    };
+    getFilms();
   }, [films]);
 
   const handleAddToFav = () => {
@@ -87,7 +76,7 @@ const CharacterDetails = ({ details }) => {
         <Heading>Mass:</Heading>
         <Paragraph>{mass}</Paragraph>
       </StyledSingleDetailWrapper>
-      {renderFilmsWrapper()}
+      {filmsArr.length !== 0 ? renderFilmsWrapper() : <Spinner />}
     </StyledDetailsWrapper>
   );
 

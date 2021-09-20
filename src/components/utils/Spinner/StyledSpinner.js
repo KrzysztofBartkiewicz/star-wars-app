@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
+  /* width: 100%;
+  height: 100%; */
   display: flex;
   align-items: center;
   justify-content: space-around;
-  position: fixed;
 `;
 
 export const StyledSpinner = styled.div`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, activeColor }) =>
+    activeColor ? theme.colors[activeColor] : theme.colors.white};
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;

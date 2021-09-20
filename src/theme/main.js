@@ -84,6 +84,10 @@ const mainTheme = {
       }
     `,
   },
+  mq: {
+    tablet: '@media screen and (max-width: 1065px)',
+    mobile: '@media screen and (max-width: 800px)',
+  },
 };
 
 export default mainTheme;

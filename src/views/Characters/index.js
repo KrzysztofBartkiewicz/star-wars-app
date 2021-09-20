@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../../components/organisms/Card';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCharacters } from '../../redux/appReducer/selectors';
@@ -12,15 +12,20 @@ import Spinner from '../../components/utils/Spinner';
 const Characters = () => {
   const characters = useSelector(getCharacters);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleNext = async () => {
+    setIsLoading(true);
     const data = await fetchCharacters(characters.next);
     dispatch(setCharacters(data));
+    setIsLoading(false);
   };
 
   const handlePrevious = async () => {
+    setIsLoading(true);
     const data = await fetchCharacters(characters.previous);
     dispatch(setCharacters(data));
+    setIsLoading(false);
   };
 
   return (
@@ -35,11 +40,15 @@ const Characters = () => {
             onNextClick={handleNext}
             onPreviousClick={handlePrevious}
           />
-          <List
-            arr={characters.results}
-            currentPage={characters.page}
-            component={Card}
-          />
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <List
+              arr={characters.results}
+              currentPage={characters.page}
+              component={Card}
+            />
+          )}
         </>
       ) : (
         <Spinner />

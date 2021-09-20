@@ -6,6 +6,7 @@ export const StyledCharacterDetails = styled.div`
   ${({ theme }) => theme.defaultBoxShape}
   display: flex;
   align-items: stretch;
+  justify-content: center;
   min-width: 70rem;
 `;
 
@@ -17,6 +18,7 @@ export const StyledMainWrapper = styled.div`
 export const StyledImage = styled.img`
   ${({ theme }) => theme.defaultBoxShape}
   max-height: 40rem;
+  max-width: 50rem;
 `;
 
 export const StyledNumberWrapper = styled.div`
@@ -38,6 +40,10 @@ export const StyledContent = styled.div`
   & > * {
     margin-bottom: 1.5rem;
   }
+
+  & > *:last-child {
+    margin-bottom: 2.5rem;
+  }
 `;
 
 export const StyledFavIcon = styled(FavIcon)`
@@ -51,7 +57,7 @@ export const StyledNumber = styled(Heading)`
 export const StyledDetailsWrapper = styled.div`
   width: 60%;
   padding: 4rem;
-  margin-left: 3rem;
+  margin-left: 10rem;
 `;
 
 export const StyledSingleDetailWrapper = styled.div`

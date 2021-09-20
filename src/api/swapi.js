@@ -44,3 +44,51 @@ export const fetchSearchedCharacters = (fraze, page) => {
     })
     .catch((err) => console.error('search', err));
 };
+
+export const fetchFilms = (films) => {
+  return new Promise((resolve, reject) => {
+    let promisesArr = [];
+
+    films.forEach((film) => promisesArr.push(axios.get(film)));
+
+    Promise.all(promisesArr)
+      .then((res) => {
+        const mappedFilms = res.map(({ data }) => {
+          const { title, producer, director, release_date } = data;
+          return {
+            title,
+            producer,
+            director,
+            release_date,
+          };
+        });
+
+        resolve(mappedFilms);
+      })
+      .catch((err) => reject(err));
+  });
+};
+
+// export const fetchFilms = (films) => {
+//   let promisesArr = [];
+//   let filmsArr = [];
+
+//   films.forEach((film) => promisesArr.push(axios.get(film)));
+
+//   Promise.all(promisesArr)
+//     .then((res) => {
+//       const mappedFilms = res.map(({ data }) => {
+//         const { title, producer, director, release_date } = data;
+//         return {
+//           title,
+//           producer,
+//           director,
+//           release_date,
+//         };
+//       });
+//       filmsArr = mappedFilms;
+//     })
+//     .catch((err) => console.error(err));
+
+//   return filmsArr;
+// };
