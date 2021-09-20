@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Heading from '../../atoms/Heading';
 import Paragraph from '../../atoms/Paragraph';
 import { useDispatch, useSelector } from 'react-redux';
