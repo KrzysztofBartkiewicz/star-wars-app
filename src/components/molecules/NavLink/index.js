@@ -3,10 +3,15 @@ import { useSelector } from 'react-redux';
 import { getActiveColor } from '../../../redux/appReducer/selectors';
 import { StyledNavLink, StyledUnderline } from './StyledNavLink';
 
-const NavLink = ({ children, to, exact, navMenu }) => {
+const NavLink = ({ onClick, children, to, exact, navMenu, className }) => {
   const activeColor = useSelector(getActiveColor);
   return (
-    <StyledNavLink to={to} exact={exact}>
+    <StyledNavLink
+      className={className}
+      onClick={onClick}
+      to={to}
+      exact={exact}
+    >
       {children}
       {navMenu && <StyledUnderline activeColor={activeColor} />}
     </StyledNavLink>

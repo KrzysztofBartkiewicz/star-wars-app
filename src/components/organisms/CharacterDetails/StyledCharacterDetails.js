@@ -7,22 +7,38 @@ export const StyledCharacterDetails = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: center;
-  min-width: 70rem;
+
+  ${({ theme }) => theme.mq.tablet} {
+    flex-direction: column;
+    align-items: center;
+    min-width: 50rem;
+  }
 `;
 
 export const StyledMainWrapper = styled.div`
-  width: 40%;
+  width: 100%;
   margin: 1rem;
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const StyledImage = styled.img`
   ${({ theme }) => theme.defaultBoxShape}
   max-height: 40rem;
   max-width: 50rem;
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin: 0 auto;
+  }
 `;
 
 export const StyledNumberWrapper = styled.div`
   ${({ theme }) => theme.defaultBoxShape}
+  max-width: 50rem;
+  margin: 1rem;
 `;
 
 export const StyledNumberBox = styled.div`
@@ -58,6 +74,10 @@ export const StyledDetailsWrapper = styled.div`
   width: 60%;
   padding: 4rem;
   margin-left: 10rem;
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin-left: 0;
+  }
 `;
 
 export const StyledSingleDetailWrapper = styled.div`

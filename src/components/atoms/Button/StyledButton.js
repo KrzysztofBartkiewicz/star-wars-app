@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
 
-  ${({ theme, color, variant, disabled, activeColor }) => {
+  ${({ theme, color, variant, disabled, activeColor, active }) => {
     const { colors } = theme;
 
     const getBtnColor = () => {
@@ -50,6 +50,51 @@ export const StyledButton = styled.button`
           display: flex;
           align-items: center;
           justify-content: space-around;
+        `;
+      }
+      if (variant === 'hamburger') {
+        const bar = css`
+          content: '';
+          min-width: ${active ? '3.5rem' : '5rem'};
+          height: .8rem;
+          border-radius: 1rem 0.5rem;
+          border: 1px solid ${colors.grey};
+          background-color: ${colors[activeColor]};
+          position: absolute;
+          left: calc(50% - 5rem / 2);
+          transition transform .3s ease-in-out;
+        `;
+        cssRules = css`
+          width: 6rem;
+          height: 5rem;
+          position: relative;
+          border-radius: ${active ? '1rem 0.5rem' : '0.5rem 1rem'} ;
+          background-color: transparent;
+          border: 3px solid ${colors.grey};
+          padding: 0 3rem;
+          transition border-radius .3s ease-in-out;
+          display: none;
+          position: fixed;
+          top: 2rem;
+          left: 2rem;
+          z-index: 1500;
+
+          ${({ theme }) => theme.mq.mobile} {
+            display: block;
+          }
+
+          &:before {
+            ${bar}
+            top: 1rem;
+            transform: ${active && ' translate(1.6rem, 0.7rem)  rotate(90deg)'};
+          }
+          &:after {
+            ${bar}
+            bottom: 1rem;
+            transform: ${
+              active && ' translate(-0.5rem, -0.7rem)  rotate(90deg)'
+            };
+          }
         `;
       }
     };

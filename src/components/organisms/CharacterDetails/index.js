@@ -103,7 +103,7 @@ const CharacterDetails = ({ details }) => {
           <StyledNumberBox>
             <StyledContent>
               <StyledNumber type="h1">{number}</StyledNumber>
-              {isInFavs() && <StyledFavIcon size="6x" />}
+              {isInFavs() && <StyledFavIcon size="4x" />}
               <Button
                 color={isInFavs() ? 'secondary' : 'primary'}
                 onClick={isInFavs() ? handleDeleteFromFavs : handleAddToFav}

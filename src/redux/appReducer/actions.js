@@ -6,6 +6,7 @@ export const actionType = {
   DELETE_ALL_FAVORITES_CHARACTERS: 'DELETE_ALL_FAVORITES_CHARACTERS',
   SET_SEARCHED_CHARACTERS: 'SET_SEARCHED_CHARACTERS',
   SET_ACITVE_COLOR: 'SET_ACTIVE_COLOR',
+  TOGGLE_MENU_OPEN: 'TOGGLE_MENU_OPEN',
 };
 
 export const setCharacters = (characters) => ({
@@ -41,4 +42,9 @@ export const setSearchedCharacters = (characters) => ({
 export const setActiveColor = (color) => ({
   type: actionType.SET_ACITVE_COLOR,
   payload: color,
+});
+
+export const toggleMenuOpen = () => ({
+  type: actionType.TOGGLE_MENU_OPEN,
+  payload: null,
 });

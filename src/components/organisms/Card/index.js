@@ -1,5 +1,4 @@
 import React from 'react';
-import NavLink from '../../molecules/NavLink';
 import Button from '../../atoms/Button';
 import FavIcon from '../../atoms/FavIcon/Index';
 import routes from '../../../router/routes';
@@ -10,6 +9,7 @@ import {
   StyledCard,
   StyledContent,
   StyledName,
+  StyledNavLink,
   StyledNumber,
 } from './StyledCard';
 import {
@@ -46,14 +46,14 @@ const Card = (props) => {
           >
             {isInFavs() ? 'Delete from favs' : 'Add to favs'}
           </Button>
-          <NavLink
+          <StyledNavLink
             to={{
               pathname: `${routes.character}/${name.replace(/\s/g, '')}`,
               state: props,
             }}
           >
             <Button color="secondary">See details</Button>
-          </NavLink>
+          </StyledNavLink>
         </StyledContent>
       </StyledBox>
     </StyledCard>

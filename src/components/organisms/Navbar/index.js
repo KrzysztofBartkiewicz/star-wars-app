@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import routes from '../../../router/routes';
+import { useSelector, useDispatch } from 'react-redux';
+import { isMenuOpen } from '../../../redux/appReducer/selectors';
 import NavLink from '../../molecules/NavLink';
 import Paragraph from '../../atoms/Paragraph';
 import Popover from '../../utils/Popover';
@@ -9,33 +11,40 @@ import {
   StyledUserMenuWrapper,
   StyledLogo,
 } from './StyledNavbar';
+import { toggleMenuOpen } from '../../../redux/appReducer/actions';
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-
-  const handleScroll = () => {
-    const scrollValue = document.scrollingElement.scrollTop;
-    setScrollPosition(scrollValue);
-  };
+  const menuStatus = useSelector(isMenuOpen);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleScroll = () => {
+    const scrollValue = document.scrollingElement.scrollTop;
+    setScrollPosition(scrollValue);
+  };
+
+  const handleCLoseMenu = () => {
+    dispatch(toggleMenuOpen());
+  };
+
   return (
-    <StyledNavbar scrollPosition={scrollPosition}>
+    <StyledNavbar isMenuOpen={menuStatus} scrollPosition={scrollPosition}>
       <StyledNavMenuWrapper>
-        <NavLink exact to={routes.home} navMenu>
+        <NavLink onClick={handleCLoseMenu} exact to={routes.home} navMenu>
           <Paragraph>Home</Paragraph>
         </NavLink>
-        <NavLink to={routes.characters} navMenu>
+        <NavLink onClick={handleCLoseMenu} to={routes.characters} navMenu>
           <Paragraph>Characters</Paragraph>
         </NavLink>
-        <NavLink to={routes.favorites} navMenu>
+        <NavLink onClick={handleCLoseMenu} to={routes.favorites} navMenu>
           <Paragraph>Favorites</Paragraph>
         </NavLink>
-        <NavLink to={routes.search} navMenu>
+        <NavLink onClick={handleCLoseMenu} to={routes.search} navMenu>
           <Paragraph>Search</Paragraph>
         </NavLink>
       </StyledNavMenuWrapper>

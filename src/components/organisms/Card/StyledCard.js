@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Heading from '../../atoms/Heading';
+import NavLink from '../../molecules/NavLink';
 
 export const StyledCard = styled.div`
   ${({ theme }) => theme.mixins.box}
@@ -13,6 +14,12 @@ export const StyledBox = styled.div`
 
   &:hover {
     transform: translateY(-15px);
+  }
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  ${({ theme }) => theme.mq.mobile} {
+    display: none;
   }
 `;
 

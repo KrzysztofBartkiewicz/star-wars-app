@@ -85,6 +85,7 @@ const mainTheme = {
     `,
   },
   mq: {
+    desktopSm: '@media screen and (max-width: 1240px)',
     tablet: '@media screen and (max-width: 1065px)',
     mobile: '@media screen and (max-width: 800px)',
   },

@@ -19,6 +19,22 @@ export const StyledNavbar = styled.nav`
       padding: 1rem 10rem;
       background-color: ${theme.colors.lightGrey(0.97)};
     `}
+
+  ${({ theme }) => theme.mq.desktopSm} {
+    padding: 1rem 1rem;
+    background-color: ${({ theme }) => theme.colors.lightGrey(0.97)};
+  }
+
+  ${({ theme }) => theme.mq.mobile} {
+    padding-top: 3rem;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100vh;
+    transition: transform 0.3s ease-in-out;
+    transform: ${({ isMenuOpen }) =>
+      isMenuOpen ? 'translateX(0)' : 'translateX(-100%)'};
+  }
 `;
 
 export const StyledLogo = styled(Logo)`
@@ -35,11 +51,30 @@ export const StyledLogo = styled(Logo)`
       max-width: 10rem;
       max-height: 10rem;
     `}
+
+  ${({ theme }) => theme.mq.desktopSm} {
+    max-width: 10rem;
+    max-height: 10rem;
+    left: 60%;
+  }
+
+  ${({ theme }) => theme.mq.mobile} {
+    position: static;
+    transform: translateX(0);
+  }
 `;
 
 export const StyledNavMenuWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  ${({ theme }) => theme.mq.mobile} {
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: 3rem;
+    }
+  }
 `;
 
 export const StyledUserMenuWrapper = styled.div`
@@ -48,5 +83,10 @@ export const StyledUserMenuWrapper = styled.div`
 
   & > * {
     margin-right: 4rem;
+  }
+  ${({ theme }) => theme.mq.mobile} {
+    & > * {
+      margin-right: 0;
+    }
   }
 `;

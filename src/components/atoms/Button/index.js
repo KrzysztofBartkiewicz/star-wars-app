@@ -11,6 +11,7 @@ const Button = ({
   onClick,
   disabled,
   type,
+  active,
 }) => {
   const activeColor = useSelector(getActiveColor);
 
@@ -23,6 +24,7 @@ const Button = ({
       className={className}
       type={type}
       variant={variant}
+      active={active}
     >
       {children}
     </StyledButton>

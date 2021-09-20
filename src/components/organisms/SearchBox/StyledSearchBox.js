@@ -10,6 +10,10 @@ export const StyledSearchBox = styled.form`
   justify-content: space-between;
   text-align: center;
 
+  ${({ theme }) => theme.mq.tablet} {
+    width: 50vw;
+  }
+
   & > *:not(:last-child) {
     margin-bottom: 3rem;
   }

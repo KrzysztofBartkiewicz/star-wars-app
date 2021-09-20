@@ -5,6 +5,7 @@ const initialState = {
   favCharacters: [],
   searchedCharacters: null,
   activeColor: 'red',
+  isMenuOpen: false,
 };
 
 const appReducer = (state = initialState, { type, payload }) => {
@@ -52,6 +53,12 @@ const appReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         activeColor: payload,
+      };
+
+    case actionType.TOGGLE_MENU_OPEN:
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
       };
 
     default:
