@@ -16,12 +16,12 @@ export const StyledCharacterDetails = styled.div`
 `;
 
 export const StyledMainWrapper = styled.div`
-  width: 100%;
   margin: 1rem;
 
   ${({ theme }) => theme.mq.tablet} {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -43,11 +43,10 @@ export const StyledNumberWrapper = styled.div`
 
 export const StyledNumberBox = styled.div`
   ${({ theme }) => theme.mixins.innerBox}
-  padding: 0 10rem;
+  padding: 0 5rem;
 `;
 
 export const StyledContent = styled.div`
-  width: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,7 +72,7 @@ export const StyledNumber = styled(Heading)`
 export const StyledDetailsWrapper = styled.div`
   width: 60%;
   padding: 4rem;
-  margin-left: 10rem;
+  margin-left: 1rem;
 
   ${({ theme }) => theme.mq.tablet} {
     margin-left: 0;

@@ -1,7 +1,7 @@
 import { actionType } from './actions';
 
 const initialState = {
-  currentUser: null,
+  currentUser: 'user signed out',
   error: null,
 };
 
