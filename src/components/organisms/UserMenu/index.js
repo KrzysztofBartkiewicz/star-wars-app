@@ -26,7 +26,7 @@ const UserMenu = () => {
       {currentUser && (
         <>
           <StyledInnerWrapper>
-            <Heading color="white">Welocme,</Heading>
+            <Heading color="white">Welcome,</Heading>
             <Paragraph>{extractLogin(currentUser.email)}</Paragraph>
           </StyledInnerWrapper>
           {favs.length !== 0 && (
