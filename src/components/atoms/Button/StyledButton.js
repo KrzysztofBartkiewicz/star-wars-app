@@ -12,6 +12,13 @@ export const StyledButton = styled.button`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
 
+  &:hover {
+    box-shadow: ${({ theme, disabled }) =>
+      !disabled && `0 10px 20px ${theme.colors.black(0.6)}`};
+    background: ${({ theme, disabled }) => !disabled && theme.colors.white};
+    color: ${({ theme, disabled }) => !disabled && theme.colors.black};
+  }
+
   ${({ theme, color, variant, disabled, activeColor, active }) => {
     const { colors } = theme;
 
@@ -50,6 +57,14 @@ export const StyledButton = styled.button`
           display: flex;
           align-items: center;
           justify-content: space-around;
+
+          &:hover {
+            background-color: transparent;
+            & > * {
+              transition: color 0.3s ease-in-out;
+              color: ${theme.colors[activeColor]};
+            }
+          }
         `;
       }
       if (variant === 'hamburger') {
@@ -79,6 +94,10 @@ export const StyledButton = styled.button`
           left: 2rem;
           z-index: 1500;
 
+          &:active, &:hover, &:focus {
+            background-color: transparent;
+          }
+
           ${({ theme }) => theme.mq.mobile} {
             display: block;
           }
@@ -101,25 +120,4 @@ export const StyledButton = styled.button`
     getBtnColor();
     return cssRules;
   }}
-
-  &:hover {
-    ${({ disabled, theme, variant, activeColor }) => {
-      if (!disabled) {
-        if (variant === 'round') {
-          return css`
-            & > * {
-              transition: color 0.3s ease-in-out;
-              color: ${theme.colors[activeColor]};
-            }
-          `;
-        } else {
-          return css`
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-            background: ${theme.colors.white};
-            color: ${theme.colors.black};
-          `;
-        }
-      }
-    }}
-  }
 `;
