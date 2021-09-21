@@ -3,7 +3,7 @@ import 'firebase/compat/auth';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FB_API_KEY,
-  authDomain: process.env.RACT_APP_FB_AUTH_DOMAIN,
+  authDomain: 'star-wars-app-97b77.firebaseapp.com',
   projectId: process.env.REACT_APP_FB_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FB_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FB_SENDER_ID,
