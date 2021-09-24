@@ -14,6 +14,10 @@ export const StyledSearchBox = styled.form`
     width: 50vw;
   }
 
+  ${({ theme }) => theme.mq.mobile} {
+    width: 80vw;
+  }
+
   & > *:not(:last-child) {
     margin-bottom: 3rem;
   }

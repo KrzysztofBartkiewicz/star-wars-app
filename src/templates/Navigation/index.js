@@ -4,6 +4,8 @@ import Button from '../../components/atoms/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { isMenuOpen } from '../../redux/appReducer/selectors';
 import { toggleMenuOpen } from '../../redux/appReducer/actions';
+import Footer from '../../components/organisms/Footer';
+import { StyledNavigationTemplate } from './StyledNavigation';
 
 const NavigationTemplate = ({ children }) => {
   const menuStatus = useSelector(isMenuOpen);
@@ -14,7 +16,7 @@ const NavigationTemplate = ({ children }) => {
   };
 
   return (
-    <>
+    <StyledNavigationTemplate>
       <Button
         onClick={handleToggleMenu}
         active={menuStatus}
@@ -22,7 +24,8 @@ const NavigationTemplate = ({ children }) => {
       />
       <Navbar />
       {children}
-    </>
+      <Footer />
+    </StyledNavigationTemplate>
   );
 };
 

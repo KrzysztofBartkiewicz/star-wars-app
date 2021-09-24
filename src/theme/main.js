@@ -45,7 +45,6 @@ const mainTheme = {
 
   mixins: {
     view: (bg) => css`
-      min-height: 100vh;
       padding-top: 20rem;
       background-image: radial-gradient(
           circle closest-corner at 50% 70%,
@@ -56,7 +55,7 @@ const mainTheme = {
       background-position: center;
       background-size: cover;
       background-attachment: fixed;
-      overflow-y: auto;
+      flex-grow: 1;
     `,
     box: css`
       ${defaultBoxShape}
