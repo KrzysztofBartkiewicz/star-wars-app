@@ -68,27 +68,3 @@ export const fetchFilms = (films) => {
       .catch((err) => reject(err));
   });
 };
-
-// export const fetchFilms = (films) => {
-//   let promisesArr = [];
-//   let filmsArr = [];
-
-//   films.forEach((film) => promisesArr.push(axios.get(film)));
-
-//   Promise.all(promisesArr)
-//     .then((res) => {
-//       const mappedFilms = res.map(({ data }) => {
-//         const { title, producer, director, release_date } = data;
-//         return {
-//           title,
-//           producer,
-//           director,
-//           release_date,
-//         };
-//       });
-//       filmsArr = mappedFilms;
-//     })
-//     .catch((err) => console.error(err));
-
-//   return filmsArr;
-// };
