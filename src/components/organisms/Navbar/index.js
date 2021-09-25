@@ -1,32 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import routes from '../../../router/routes';
 import { useSelector, useDispatch } from 'react-redux';
 import { isMenuOpen } from '../../../redux/appReducer/selectors';
 import NavLink from '../../molecules/NavLink';
 import Paragraph from '../../atoms/Paragraph';
 import Popover from '../../utils/Popover';
+import { toggleMenuOpen } from '../../../redux/appReducer/actions';
+import useScrollPosition from '../../../hooks/useScrollPosition';
 import {
   StyledNavbar,
   StyledNavMenuWrapper,
   StyledUserMenuWrapper,
   StyledLogo,
 } from './StyledNavbar';
-import { toggleMenuOpen } from '../../../redux/appReducer/actions';
 
 const Navbar = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollPosition = useScrollPosition();
   const menuStatus = useSelector(isMenuOpen);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleScroll = () => {
-    const scrollValue = document.scrollingElement.scrollTop;
-    setScrollPosition(scrollValue);
-  };
 
   const handleCLoseMenu = () => {
     dispatch(toggleMenuOpen());
