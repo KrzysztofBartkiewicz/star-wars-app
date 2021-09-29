@@ -29,8 +29,8 @@ const App = () => {
       dispatch(
         loadCharactersFromLS(
           JSON.parse(
-            localStorage.getItem(`${currentUser.uid}-favCharacters`) || []
-          )
+            localStorage.getItem(`${currentUser.uid}-favCharacters`)
+          ) || []
         )
       );
 
