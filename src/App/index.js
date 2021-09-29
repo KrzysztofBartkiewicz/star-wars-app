@@ -16,7 +16,7 @@ const App = () => {
   const { currentUser } = useSelector(getUserData);
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && currentUser !== 'user signed out') {
       localStorage.setItem(
         `${currentUser.uid}-favCharacters`,
         JSON.stringify(favorites)
@@ -25,20 +25,20 @@ const App = () => {
   }, [favorites]);
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && currentUser !== 'user signed out') {
+      dispatch(
+        loadCharactersFromLS(
+          JSON.parse(
+            localStorage.getItem(`${currentUser.uid}-favCharacters`) || []
+          )
+        )
+      );
+
       const getData = async () => {
         const characters = await fetchCharacters(
           'https://swapi.dev/api/people/'
         );
         dispatch(setCharacters(characters));
-
-        dispatch(
-          loadCharactersFromLS(
-            JSON.parse(
-              localStorage.getItem(`${currentUser.uid}-favCharacters`) || []
-            )
-          )
-        );
       };
       getData();
     } else {
