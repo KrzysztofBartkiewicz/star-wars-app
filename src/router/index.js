@@ -47,7 +47,7 @@ const Router = () => {
           component={Search}
           isLogged={currentUser}
         />
-        <Route path={routes.login} component={Login} />
+        <Route exact path={routes.login} component={Login} />
         <Route render={() => <Redirect to={routes.home} />} />
       </Switch>
     </BrowserRouter>
