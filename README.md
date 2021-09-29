@@ -6,7 +6,7 @@
 
 ### 1. Clone it
 
-> `git clone https://github.com/KrzysztofBartkiewicz/star-wars-app.git
+> `git clone https://github.com/KrzysztofBartkiewicz/star-wars-app.git`
 
 ### 2. Install
 
