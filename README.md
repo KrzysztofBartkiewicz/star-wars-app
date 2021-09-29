@@ -6,7 +6,7 @@
 
 ### 1. Clone it
 
-> `git clone https://github.com/delivered/coding-challenge-krzysztof-bartkiewicz.git`
+> `git clone https://github.com/KrzysztofBartkiewicz/star-wars-app.git
 
 ### 2. Install
 
